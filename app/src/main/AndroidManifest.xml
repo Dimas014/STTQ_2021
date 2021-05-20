@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
-
     <uses-permission android:name="android.permission.REORDER_TASKS" />
 
     <application
@@ -15,7 +14,8 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.STToeflQuiz">
-
+        <activity android:name=".Blank404"></activity>
+        <activity android:name=".mimin_login" />
         <activity
             android:name=".Passage.Passage1"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
@@ -79,6 +79,7 @@
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

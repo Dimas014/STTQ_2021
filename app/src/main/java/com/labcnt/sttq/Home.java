@@ -32,6 +32,7 @@ public class Home extends AppCompatActivity {
     ImageButton btnHelp;
     EditText editText;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Score");
+    DatabaseReference dbAdmin = FirebaseDatabase.getInstance().getReference().child("AdminAktifasi");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,9 +87,12 @@ public class Home extends AppCompatActivity {
         String name = editText.getText().toString();
         Intent intent = new Intent(Home.this, Listening_direction.class);
         intent.putExtra("name", name);
+        Intent intent1 = new Intent(Home.this, Blank404.class);
 
 
         if(!TextUtils.isEmpty(name)){
+
+            String AktifasiAdmin = "Admin";
 
             databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -100,7 +104,28 @@ public class Home extends AppCompatActivity {
                             Toast.makeText(Home.this, "NIM Alredy Exist", Toast.LENGTH_SHORT).show();
                         }
                     }else {
-                       startActivity(intent);
+                        dbAdmin.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                String On = "On";
+                                String Off = "Off";
+                                if (snapshot.child(AktifasiAdmin).exists()){
+                                    Mimin value = snapshot.child(AktifasiAdmin).getValue(Mimin.class);
+                                    String ValueA = value.getValueA();
+                                    if(ValueA.equals(On)){
+                                        startActivity(intent);
+                                    }
+                                    if(ValueA.equals(Off)){
+                                        startActivity(intent1);
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
                     }
                 }
 

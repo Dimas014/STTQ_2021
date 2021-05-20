@@ -30,7 +30,7 @@ import java.util.Objects;
 public class Login extends AppCompatActivity {
     private EditText username,password;
     private FirebaseAuth auth;
-    private Button btnlogin;
+    private Button btnlogin, btnAdmin;
     private TextView show, createaccount;
     ImageButton btnAbout;
     ImageButton btnHelp;
@@ -75,6 +75,11 @@ public class Login extends AppCompatActivity {
 
         createaccount = (TextView) findViewById(R.id.buat);
         btnlogin = findViewById(R.id.Btnlogin);
+        btnAdmin = findViewById(R.id.admin);
+        btnAdmin.setOnClickListener(v -> {
+            Intent mimin = new Intent(Login.this, mimin_login.class);
+            startActivity(mimin);
+        });
         auth = FirebaseAuth.getInstance();
 
     }
