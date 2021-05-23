@@ -70,7 +70,13 @@ public class Home extends AppCompatActivity {
             public void onClick(View view) {
                 String NIM = editText.getText().toString();
 
-                AddNIM();
+                if(NIM.length()==10){
+                    AddNIM();
+                }else {
+                    Toast.makeText(Home.this, "NIM Must Be 10 Digit", Toast.LENGTH_SHORT).show();
+                }
+
+
 
             }
         });

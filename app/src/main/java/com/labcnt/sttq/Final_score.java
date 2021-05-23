@@ -18,7 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Final_score extends AppCompatActivity {
     private TextView tvFinalScoreL, tvNIM, tvFinalScoreR, tvFinalScoreS, tvFinalScoreT, tvJurusan;
     private Button btnFinishTest;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference, dbTI, dbTK, dbTM, dbTmetal, dbTS;
     DatabaseReference dbNIM;
 
     double L;
@@ -33,6 +33,11 @@ public class Final_score extends AppCompatActivity {
         setContentView(R.layout.activity_finalscore);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Teknik Elektro");
+        dbTI = FirebaseDatabase.getInstance().getReference("Teknik Industri");
+        dbTK = FirebaseDatabase.getInstance().getReference("Teknik Kimia");
+        dbTM = FirebaseDatabase.getInstance().getReference("Teknik Mesin");
+        dbTmetal = FirebaseDatabase.getInstance().getReference("Teknik Metalurgi");
+        dbTS = FirebaseDatabase.getInstance().getReference("Teknik Sipil");
         dbNIM = FirebaseDatabase.getInstance().getReference("NIM");
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
@@ -96,7 +101,30 @@ public class Final_score extends AppCompatActivity {
         Score user = new Score(id, userName, scoreListening, scoreStructure, scoreReading, scoreTOEFL);
         NIM userNIM = new NIM(idNIM, userName);
 
-        databaseReference.child(user.getUserName()).setValue(user);
+        String department = tvJurusan.getText().toString().trim();
+
+        switch (department){
+            case "Teknik Elektro":
+                databaseReference.child(user.getUserName()).setValue(user);
+                break;
+            case "Teknik Industri":
+                dbTI.child(user.getUserName()).setValue(user);
+                break;
+            case "Teknik Kimia":
+                dbTK.child(user.getUserName()).setValue(user);
+                break;
+            case "Teknik Mesin":
+                dbTM.child(user.getUserName()).setValue(user);
+                break;
+            case "Teknik Metalurgi":
+                dbTmetal.child(user.getUserName()).setValue(user);
+                break;
+            case "Teknik Sipil":
+                dbTS.child(user.getUserName()).setValue(user);
+                break;
+        }
+
+
         dbNIM.child(userNIM.getNIM()).setValue(userNIM);
     }
 
