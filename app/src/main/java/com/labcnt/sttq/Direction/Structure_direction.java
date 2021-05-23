@@ -17,7 +17,7 @@ public class Structure_direction extends AppCompatActivity {
 
     Button agree;
     private TextView mScoreTextViewL;
-    private TextView tvNIM, tvScoreListening;
+    private TextView tvNIM, tvScoreListening, tvJurusan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +29,10 @@ public class Structure_direction extends AppCompatActivity {
         mScoreTextViewL = findViewById(R.id.scoreL);
         tvNIM = findViewById(R.id.Nim);
         tvScoreListening = findViewById(R.id.ScoreL);
+        tvJurusan = findViewById(R.id.pilihanS);
 
         tvNIM.setText(getIntent().getStringExtra("NIM"));
+        tvJurusan.setText(getIntent().getStringExtra("pilihan"));
         tvScoreListening.setText(getIntent().getStringExtra("scoreListening"));
 
 
@@ -42,7 +44,9 @@ public class Structure_direction extends AppCompatActivity {
 
             String NIM = tvNIM.getText().toString();
             String scoreListening = tvScoreListening.getText().toString();
+            String pilihan = tvJurusan.getText().toString();
             Intent intent = new Intent(Structure_direction.this, Structure.class);
+            intent.putExtra("pilihan", pilihan);
             intent.putExtra("NIM", NIM);
             intent.putExtra("scoreListening", scoreListening);
             startActivity(intent);

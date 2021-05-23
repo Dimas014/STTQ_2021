@@ -38,7 +38,7 @@ public class Structure extends AppCompatActivity {
     private ConstraintLayout mParentLayout;
     private TextView mScoreTextViewL,mScoreTextViewS, tvTimer;
     private TextView mRemaningQuestionsTextView;
-    private TextView tvNIM;
+    private TextView tvNIM, tvJurusan;
     private int mTotalQuestions;
     private int mScore;
     private StructureModel currentQuestion;
@@ -71,7 +71,9 @@ public class Structure extends AppCompatActivity {
                 String NIM = tvNIM.getText().toString();
                 String scoreListening = mScoreTextViewL.getText().toString();
                 String scoreStructure = mScoreTextViewS.getText().toString();
+                String pilihan = tvJurusan.getText().toString();
                 Intent intent = new Intent(Structure.this, Reading_direction.class);
+                intent.putExtra("pilihan", pilihan);
                 intent.putExtra("NIM", NIM);
                 intent.putExtra("scoreListening", scoreListening);
                 intent.putExtra("scoreStructure", scoreStructure);
@@ -84,6 +86,7 @@ public class Structure extends AppCompatActivity {
 
 
         tvNIM = findViewById(R.id.Nim);
+        tvJurusan = findViewById(R.id.pilihan);
         mScoreTextViewL = findViewById(R.id.scoreL);
         mScoreTextViewS = findViewById(R.id.scoreS);
         mParentLayout = findViewById(R.id.question_layout);
@@ -101,6 +104,7 @@ public class Structure extends AppCompatActivity {
 
         tvNIM.setText(getIntent().getStringExtra("NIM"));
         mScoreTextViewL.setText(getIntent().getStringExtra("scoreListening"));
+        tvJurusan.setText(getIntent().getStringExtra("pilihan"));
 
         timer();
     }
@@ -136,7 +140,9 @@ public class Structure extends AppCompatActivity {
                 String NIM = tvNIM.getText().toString();
                 String scoreListening = mScoreTextViewL.getText().toString();
                 String scoreStructure = mScoreTextViewS.getText().toString();
+                String pilihan = tvJurusan.getText().toString();
                 Intent intent = new Intent(Structure.this, Reading_direction.class);
+                intent.putExtra("pilihan", pilihan);
                 intent.putExtra("NIM", NIM);
                 intent.putExtra("scoreListening", scoreListening);
                 intent.putExtra("scoreStructure", scoreStructure);

@@ -93,14 +93,14 @@
 
     </LinearLayout>
 
+
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginStart="@dimen/fab_margin"
-        android:layout_marginBottom="@dimen/fab_margin"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="@dimen/fab_margin"
         android:background="@drawable/rounded_white"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -118,6 +118,15 @@
             android:text="2018"
             android:textColor="@color/black"
             android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/pilihan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jurusan"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:layout_below="@+id/Nim"/>
 
         <TextView
             android:id="@+id/TABNIM"
@@ -138,14 +147,14 @@
 
         <TextView
             android:id="@+id/scoreL"
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/Nim"
             android:layout_marginTop="5dp"
             android:text="Score Listening: 0"
             android:textColor="@color/black"
-            android:textSize="13sp" />
+            android:textSize="13sp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/Timer"
@@ -156,7 +165,6 @@
             android:textColor="@color/black"
             android:textSize="35sp" />
     </RelativeLayout>
-
 
     <ScrollView
         android:layout_width="match_parent"

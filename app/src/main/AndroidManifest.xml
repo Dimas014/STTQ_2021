@@ -14,8 +14,19 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.STToeflQuiz">
-        <activity android:name=".Blank404"></activity>
-        <activity android:name=".mimin_login" />
+        <activity android:name=".Login_Admin"></activity>
+        <activity
+            android:name=".Activation"
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+        <activity
+            android:name=".Jurusan"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".Blank404"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".mimin_login"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".Passage.Passage1"
             android:theme="@style/Theme.AppCompat.NoActionBar" />

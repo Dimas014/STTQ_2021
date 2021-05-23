@@ -16,9 +16,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class Final_score extends AppCompatActivity {
-    private TextView tvFinalScoreL, tvNIM, tvFinalScoreR, tvFinalScoreS, tvFinalScoreT;
+    private TextView tvFinalScoreL, tvNIM, tvFinalScoreR, tvFinalScoreS, tvFinalScoreT, tvJurusan;
     private Button btnFinishTest;
     DatabaseReference databaseReference;
+    DatabaseReference dbNIM;
 
     double L;
     double Re;
@@ -31,7 +32,8 @@ public class Final_score extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finalscore);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Score");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Teknik Elektro");
+        dbNIM = FirebaseDatabase.getInstance().getReference("NIM");
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         tvFinalScoreL = findViewById(R.id.scoreL);
@@ -40,9 +42,11 @@ public class Final_score extends AppCompatActivity {
         btnFinishTest = findViewById(R.id.button);
         tvNIM = findViewById(R.id.NIM);
         tvFinalScoreT = findViewById(R.id.scoreT);
+        tvJurusan = findViewById(R.id.pilihan);
 
 
         tvNIM.setText(getIntent().getStringExtra("NIM"));
+        tvJurusan.setText(getIntent().getStringExtra("pilihan"));
         tvFinalScoreL.setText("Final " + getIntent().getStringExtra("scoreListening"));
         tvFinalScoreR.setText("Final " + getIntent().getStringExtra("scoreReading"));
         tvFinalScoreS.setText("Final " + getIntent().getStringExtra("scoreStructure"));
@@ -87,10 +91,13 @@ public class Final_score extends AppCompatActivity {
         String scoreTOEFL = tvFinalScoreT.getText().toString().trim();
 
         String id = databaseReference.push().getKey();
+        String idNIM = dbNIM.push().getKey();
 
         Score user = new Score(id, userName, scoreListening, scoreStructure, scoreReading, scoreTOEFL);
+        NIM userNIM = new NIM(idNIM, userName);
 
         databaseReference.child(user.getUserName()).setValue(user);
+        dbNIM.child(userNIM.getNIM()).setValue(userNIM);
     }
 
     private void NilaiS() {

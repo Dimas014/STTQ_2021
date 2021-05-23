@@ -26,4 +26,11 @@ public class Splash_exit extends AppCompatActivity {
             }
         }, waktu_loading);
     }
+
+    @Override
+    public void onBackPressed() {
+        // super.onBackPressed();
+        //Toast.makeText(Listening.this,"You Click Back Button !, Are You Want To Cheating ?",Toast.LENGTH_SHORT).show();
+        return;
+    }
 }

@@ -3,6 +3,8 @@ package com.labcnt.sttq;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +29,7 @@ public class mimin_login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mimin_login);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("AdminAktifasi");
         btnAdminOn = findViewById(R.id.tmbl);
@@ -44,6 +47,9 @@ public class mimin_login extends AppCompatActivity {
                 Mimin user = new Mimin(id, Aktifasi, ValueA);
 
                 databaseReference.child(user.getAktifasi()).setValue(user);
+
+                Intent intent = new Intent(mimin_login.this, Activation.class);
+                startActivity(intent);
             }
         });
 
@@ -57,6 +63,9 @@ public class mimin_login extends AppCompatActivity {
                 Mimin user = new Mimin(id, Aktifasi, ValueA);
 
                 databaseReference.child(user.getAktifasi()).setValue(user);
+
+                Intent intent = new Intent(mimin_login.this, Activation.class);
+                startActivity(intent);
             }
         });
 

@@ -18,7 +18,7 @@ import com.labcnt.sttq.R;
 public class Listening_direction extends AppCompatActivity {
 
     Button agree;
-    private TextView tvNIM;
+    private TextView tvNIM, tvJurusan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,16 +28,20 @@ public class Listening_direction extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //SELALU POTRAIT
         agree = findViewById(R.id.agree);
         tvNIM = findViewById(R.id.Nim);
+        tvJurusan = findViewById(R.id.pilihan);
 
         tvNIM.setText(getIntent().getStringExtra("name"));
+        tvJurusan.setText(getIntent().getStringExtra("pilihan"));
         onClick();
     }
 
     private void onClick() {
         agree.setOnClickListener(v -> {
             String NIM = tvNIM.getText().toString();
+            String pilihan = tvJurusan.getText().toString();
             Intent intent = new Intent(Listening_direction.this, Listening.class);
             intent.putExtra("NIM", NIM);
+            intent.putExtra("pilihan", pilihan);
             startActivity(intent);
         });
     }

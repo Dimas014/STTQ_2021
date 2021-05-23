@@ -77,7 +77,7 @@ public class Login extends AppCompatActivity {
         btnlogin = findViewById(R.id.Btnlogin);
         btnAdmin = findViewById(R.id.admin);
         btnAdmin.setOnClickListener(v -> {
-            Intent mimin = new Intent(Login.this, mimin_login.class);
+            Intent mimin = new Intent(Login.this, Login_Admin.class);
             startActivity(mimin);
         });
         auth = FirebaseAuth.getInstance();

@@ -42,7 +42,7 @@ public class Reading extends AppCompatActivity {
     private ConstraintLayout mParentLayout;
     private TextView mScoreTextViewL, mScoreTextViewS, mScoreTextViewR, tvTimer;
     private TextView mRemaningQuestionsTextView;
-    private TextView tvNIM;
+    private TextView tvNIM, tvJurusan;
     private int mTotalQuestions;
     private int mScore;
     private ReadingModel currentQuestion;
@@ -81,8 +81,10 @@ public class Reading extends AppCompatActivity {
                 String scoreListening = mScoreTextViewL.getText().toString();
                 String scoreStructure = mScoreTextViewS.getText().toString();
                 String scoreReading = mScoreTextViewR.getText().toString();
+                String pilihan = tvJurusan.getText().toString();
                 Intent intent = new Intent(Reading.this, Final_score.class);
                 intent.putExtra("NIM", NIM);
+                intent.putExtra("pilihan", pilihan);
                 intent.putExtra("scoreListening", scoreListening);
                 intent.putExtra("scoreStructure", scoreStructure);
                 intent.putExtra("scoreReading", scoreReading);
@@ -151,6 +153,7 @@ public class Reading extends AppCompatActivity {
         mParentLayout = findViewById(R.id.question_layout);
         mRemaningQuestionsTextView = findViewById(R.id.QuestionNumber);
         tvTimer = findViewById(R.id.Timer);
+        tvJurusan = findViewById(R.id.pilihan);
 
         mRecyclerView = findViewById(R.id.recyclerView);
         mAdapter = new ReadingAdapter(this,questionsList);
@@ -163,6 +166,7 @@ public class Reading extends AppCompatActivity {
         displayScore();
 
         tvNIM.setText(getIntent().getStringExtra("NIM"));
+        tvJurusan.setText(getIntent().getStringExtra("pilihan"));
         mScoreTextViewL.setText(getIntent().getStringExtra("scoreListening"));
         mScoreTextViewS.setText(getIntent().getStringExtra("scoreStructure"));
 
@@ -201,8 +205,10 @@ public class Reading extends AppCompatActivity {
                 String scoreListening = mScoreTextViewL.getText().toString();
                 String scoreStructure = mScoreTextViewS.getText().toString();
                 String scoreReading = mScoreTextViewR.getText().toString();
+                String pilihan = tvJurusan.getText().toString();
                 Intent intent = new Intent(Reading.this, Final_score.class);
                 intent.putExtra("NIM", NIM);
+                intent.putExtra("pilihan", pilihan);
                 intent.putExtra("scoreListening", scoreListening);
                 intent.putExtra("scoreStructure", scoreStructure);
                 intent.putExtra("scoreReading", scoreReading);

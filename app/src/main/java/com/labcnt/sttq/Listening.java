@@ -46,7 +46,7 @@ public class Listening extends AppCompatActivity {
     private ConstraintLayout mParentLayout;
     private TextView mScoreTextView;
     private TextView mRemaningQuestionsTextView;
-    private TextView tvNIM;
+    private TextView tvNIM, tvJurusan;
     private int mTotalQuestions;
     private int mScore;
     private ListeningModel currentQuestion;
@@ -86,8 +86,10 @@ public class Listening extends AppCompatActivity {
             public void onClick(View v) {
                 String NIM = tvNIM.getText().toString();
                 String scoreListening = mScoreTextView.getText().toString();
+                String pilihan = tvJurusan.getText().toString();
                 Intent intent = new Intent(Listening.this, Structure_direction.class);
                 intent.putExtra("NIM", NIM);
+                intent.putExtra("pilihan", pilihan);
                 intent.putExtra("scoreListening", scoreListening);
                 startActivity(intent);
                 countDownTimer.cancel();
@@ -100,6 +102,7 @@ public class Listening extends AppCompatActivity {
 
 
         tvNIM = findViewById(R.id.Nim);
+        tvJurusan = findViewById(R.id.pilihan);
         mScoreTextView = findViewById(R.id.scoreL);
         mParentLayout = findViewById(R.id.question_layout);
         mRemaningQuestionsTextView = findViewById(R.id.QuestionNumber);
@@ -115,6 +118,7 @@ public class Listening extends AppCompatActivity {
         displayScore();
 
         tvNIM.setText(getIntent().getStringExtra("NIM"));
+        tvJurusan.setText(getIntent().getStringExtra("pilihan"));
 
         timer();
 
@@ -203,7 +207,9 @@ public class Listening extends AppCompatActivity {
             public void onFinish() {
                 String NIM = tvNIM.getText().toString();
                 String scoreListening = mScoreTextView.getText().toString();
+                String pilihan = tvJurusan.getText().toString();
                 Intent intent = new Intent(Listening.this, Structure_direction.class);
+                intent.putExtra("pilihan", pilihan);
                 intent.putExtra("NIM", NIM);
                 intent.putExtra("scoreListening", scoreListening);
                 startActivity(intent);

@@ -31,7 +31,7 @@ public class Home extends AppCompatActivity {
     ImageButton btnAbout;
     ImageButton btnHelp;
     EditText editText;
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Score");
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("NIM");
     DatabaseReference dbAdmin = FirebaseDatabase.getInstance().getReference().child("AdminAktifasi");
 
     @Override
@@ -85,7 +85,7 @@ public class Home extends AppCompatActivity {
 
     private void AddNIM(){
         String name = editText.getText().toString();
-        Intent intent = new Intent(Home.this, Listening_direction.class);
+        Intent intent = new Intent(Home.this, Jurusan.class);
         intent.putExtra("name", name);
         Intent intent1 = new Intent(Home.this, Blank404.class);
 
@@ -98,9 +98,9 @@ public class Home extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if(snapshot.child(name).exists()) {
-                        Score value = snapshot.child(name).getValue(Score.class);
+                        NIM value = snapshot.child(name).getValue(NIM.class);
 
-                        if (value.getUserName().equals(name)) {
+                        if (value.getNIM().equals(name)) {
                             Toast.makeText(Home.this, "NIM Alredy Exist", Toast.LENGTH_SHORT).show();
                         }
                     }else {
